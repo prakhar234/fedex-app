@@ -1,0 +1,71 @@
+pipeline {
+    agent any
+
+    environment {
+        NODEJS_HOME = tool name: 'NodeJS20', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+        PATH = "${NODEJS_HOME}/bin:${env.PATH}"
+        FIREBASE_TOKEN = credentials('firebase-token')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Clone the repository from GitHub
+                git 'https://github.com/prakhar234/fedex-app.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                // Install Node.js dependencies
+                sh 'npm install'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Build the project
+                sh 'npm run build'
+            }
+
+            post {
+                success {
+                    echo 'Archiving artifacts'
+                    archiveArtifacts artifacts: 'dist/**', allowEmptyArchive: true
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Run unit tests
+                sh ' npm run test'
+            }
+        }
+        
+        stage('Deploy to Firebase') {
+            steps {
+                script {
+                    // Install Firebase Tools
+                    sh 'npm install -g firebase-tools@9.10.0'
+
+                    // Deploy to Firebase
+                    sh 'firebase deploy --token $FIREBASE_TOKEN'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Clean workspace after build
+            cleanWs()
+        }
+        success {
+            echo 'Build and Deployment success!'
+        }
+        failure {
+            echo 'Build failed!'
+        }
+    }
+}

@@ -1,1 +1,182 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./app/shared/styles/variables.scss";
+
+:host {
+  font-size: 16px;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Barlow", Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0.5rem 0;
+}
+
+p {
+  margin-bottom: 0.5rem;
+
+  strong {
+    color: $primary-color;
+  }
+
+  &.description {
+    height: 72px;
+  }
+}
+
+.sidedrawer {
+  position: fixed;
+  width: 280px;
+  max-width: 80%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  background-color: $black;
+  padding: 2rem 0;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-out;
+
+  .logo {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  &.close {
+    transform: translateX(-100vh);
+  }
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.button {
+  height: 2rem;
+  border-radius: 0.5rem;
+
+  &-group {
+    display: flex;
+    margin-top: 1.25rem;
+    justify-content: space-evenly;
+    flex-direction: column;
+    padding: 0 2rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &-row {
+    display: flex;
+    margin: 1.25rem 0;
+
+    button {
+      margin: 0 0.75rem;
+    }
+  }
+
+  &-primary,
+  &-secondary {
+    padding: 0 0.5rem;
+    width: auto;
+    border-radius: 0.5rem;
+    background: $black;
+    color: $white;
+    border: 1px solid $white;
+    margin: 0.75rem 0;
+    box-shadow: 0 0 5px 0 $white;
+    outline-color: $white;
+    display: flex;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+      background: $white;
+      color: $black;
+      border: 1px solid $black;
+      box-shadow: 0 0 5px 0 $black;
+      transform: scale(1.2);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  &-secondary {
+    background: $button-secondary-color;
+    color: $white;
+  }
+
+  &-disabled,
+  &:disabled {
+    background-color: darkgrey;
+    cursor: no-drop;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 767px) {
+  .card-container {
+    margin-top: 2rem;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .button {
+    &-group {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0;
+    }
+
+    &-row {
+      margin: 0;
+    }
+
+    &.md {
+      padding: 0 1rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .button {
+    &.md {
+      padding: 0 2rem;
+    }
+  }
+}

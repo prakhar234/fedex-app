@@ -1,0 +1,37 @@
+@import "../../styles/variables.scss";
+.notification-container {
+  position: absolute;
+  z-index: 1500;
+  width: 100%;
+  left: 50%;
+  top: 4.5rem;
+  transform: translateX(-50%);
+  padding: 0 1.25rem;
+}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.message-box {
+  line-height: inherit;
+  margin: 5px 0;
+  padding: 1rem;
+  box-shadow: 0 0 1.25rem 0 $box-shadow-color;
+  border-radius: 0.5rem;
+}
+.success {
+  background-color: $success-color;
+}
+.warning {
+  background-color: $warning-color;
+}
+.error {
+  background-color: $danger-color;
+}
+.info {
+  background-color: $info-color;
+}

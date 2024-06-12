@@ -1,0 +1,86 @@
+<div class="container">
+  <h2>Sign up</h2>
+  <form
+    [formGroup]="signupForm"
+    (ngSubmit)="onSubmit()"
+    [ariaDisabled]="isSubmitted"
+    class="form"
+  >
+    <div class="form-row">
+      <label class="form-label" for="firstName" aria-labelledby="firstName"
+        >First name:
+      </label>
+      <input
+        type="text"
+        id="firstName"
+        class="form-control"
+        formControlName="firstName"
+        placeholder="john"
+      />
+      <app-form-error
+        [formInput]="firstName"
+        name="First name"
+      ></app-form-error>
+    </div>
+    <div class="form-row">
+      <label class="form-label" for="lastName" aria-labelledby="lastName"
+        >Last name:
+      </label>
+      <input
+        type="text"
+        id="lastName"
+        class="form-control"
+        formControlName="lastName"
+        placeholder="Doe"
+      />
+      <app-form-error [formInput]="lastName" name="Last name"></app-form-error>
+    </div>
+    <div class="form-row">
+      <label class="form-label" for="email" aria-labelledby="email"
+        >Email:
+      </label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        formControlName="email"
+        placeholder="john@doe.com"
+      />
+      <app-form-error [formInput]="email" name="Email"></app-form-error>
+    </div>
+    <div class="form-row">
+      <label class="form-label" for="password" aria-labelledby="password"
+        >Password:
+      </label>
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <app-form-error [formInput]="password" name="Password"></app-form-error>
+    </div>
+    <div class="button-group">
+      <button
+        type="submit"
+        [disabled]="!validForm"
+        class="button button-secondary md"
+        ngClass="{'button-disabled': !validForm}"
+        aria-label="Submit Form"
+      >
+        Sign up
+      </button>
+      <button
+        type="button"
+        class="button button-primary md"
+        (click)="onReset()"
+        aria-label="Reset form"
+      >
+        Reset
+      </button>
+    </div>
+  </form>
+
+  <h4>Entered Name: {{ fullName }}</h4>
+</div>

@@ -1,0 +1,27 @@
+<div class="app-header">
+  <div class="app-header-logo">FedEx</div>
+  <div class="app-header-links">
+    <app-navigation></app-navigation>
+  </div>
+  <div
+    (click)="toggleMenu()"
+    (keyup.space)="(toggleMenu)"
+    tabindex="0"
+    class="app-header-hamburger-icon"
+  >
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  @if (toggleMenuVisible) {
+  <div class="app-header-side-drawer">
+    <app-backdrop (backdropClick)="toggleMenu()"></app-backdrop>
+    <div class="sidedrawer">
+      <div class="logo">Clinical Trials</div>
+      <div class="sidedrawer-links">
+        <app-navigation></app-navigation>
+      </div>
+    </div>
+  </div>
+  }
+</div>

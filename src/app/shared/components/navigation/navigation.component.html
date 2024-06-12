@@ -1,0 +1,35 @@
+<nav class="navigation">
+  <ul class="navigation-links">
+    @if (isAuthenticated) {
+    <li class="navigation-link">
+      <a
+        class="link"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLink="home"
+        tabindex="0"
+        >Home</a
+      >
+    </li>
+    } @if (!isAuthenticated) {
+    <li class="navigation-link">
+      <a
+        class="link"
+        routerLinkActive="active"
+        routerLink="/signup"
+        tabindex="0"
+        >Signup</a
+      >
+    </li>
+    }
+  </ul>
+  @if (isAuthenticated) {
+  <ul class="navigation-links">
+    <li class="navigation-link">
+      <a class="link" (click)="logout()" (keyup.enter)="logout()" tabindex="0"
+        >Logout</a
+      >
+    </li>
+  </ul>
+  }
+</nav>
