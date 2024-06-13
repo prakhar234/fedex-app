@@ -1,28 +1,23 @@
 import { Injectable } from '@angular/core';
 import { IUser } from '../../shared/interfaces/user.interface';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  user$ = new Subject<IUser | null>();
-
-  constructor() {
-    this.isAuthenticated = !!localStorage.getItem('user');
-  }
   // this service is just faking the sign in of user.
   // If the user is not signed in, user will be null other while registering
   // User will be added when registration api return successful response
   private user: IUser | null = JSON.parse(
     localStorage.getItem('user') || 'null'
   );
-  private isAuthenticated = false;
+
+  user$ = new BehaviorSubject<IUser | null>(this.user);
 
   signInUser(user: IUser): void {
     this.user = user;
     localStorage.setItem('user', JSON.stringify(this.user));
-    this.isAuthenticated = true;
     this.user$.next(user);
   }
 
@@ -37,13 +32,12 @@ export class AuthService {
   }
 
   isAuthenticatedUser(): boolean {
-    return this.isAuthenticated;
+    return this.user ? true : false;
   }
 
   logout(): void {
     this.user = null;
     localStorage.removeItem('user');
-    this.isAuthenticated = false;
     this.user$.next(null);
   }
 

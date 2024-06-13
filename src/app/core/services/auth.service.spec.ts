@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { AuthService } from './auth.service';
 import { IUser } from '../../shared/interfaces/user.interface';
+import { take } from 'rxjs';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -44,13 +45,13 @@ describe('AuthService', () => {
   });
 
   it('should emit user when signin user is called', (done: DoneFn) => {
-    service.user$.subscribe({
+    service.signInUser(fakeUser);
+    service.user$.pipe(take(1)).subscribe({
       next: (user) => {
         expect(user?.id).toBe(fakeUser.id);
         done();
       },
     });
-    service.signInUser(fakeUser);
   });
 
   it('should return null if user is not signed in', () => {
