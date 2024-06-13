@@ -1,4 +1,9 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick,
+} from '@angular/core/testing';
 
 import { NotificationComponent } from './notification.component';
 import { DebugElement, Renderer2 } from '@angular/core';
@@ -15,9 +20,8 @@ describe('NotificationComponent', () => {
     await TestBed.configureTestingModule({
       imports: [NotificationComponent],
       providers: [NotificationService, Renderer2],
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(NotificationComponent);
     component = fixture.componentInstance;
     notificationService = TestBed.inject(NotificationService);
@@ -77,7 +81,7 @@ describe('NotificationComponent', () => {
     messageBox = notificationContainer.query(By.css('.message-box'));
     fixture.whenStable().then(() => {
       expect(messageBox).toBeFalsy();
-    })
+    });
   }));
 
   it('should not render any notification if no notification are set', () => {

@@ -7,14 +7,13 @@ import { By } from '@angular/platform-browser';
 describe('BackdropComponent', () => {
   let component: BackdropComponent;
   let fixture: ComponentFixture<BackdropComponent>;
-  let el: DebugElement
+  let el: DebugElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BackdropComponent]
-    })
-    .compileComponents();
-    
+      imports: [BackdropComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(BackdropComponent);
     component = fixture.componentInstance;
     el = fixture.debugElement;
@@ -28,7 +27,7 @@ describe('BackdropComponent', () => {
 
   it('should emit backdrop click event on click', () => {
     const backdrop = el.queryAll(By.css('.backdrop'))[0].nativeElement;
-    backdrop.dispatchEvent(new Event('click'))
+    backdrop.dispatchEvent(new Event('click'));
     expect(component.backdropClick.emit).toHaveBeenCalled();
-  })
+  });
 });

@@ -7,8 +7,7 @@ import { INotification } from '../../interfaces/notification.interface';
   providedIn: 'root',
 })
 export class NotificationService {
-  notification$: Subject<INotification> =
-    new Subject();
+  notification$: Subject<INotification> = new Subject();
 
   success(message: string, duration?: number) {
     this.notify(message, NotificationType.Success, duration);

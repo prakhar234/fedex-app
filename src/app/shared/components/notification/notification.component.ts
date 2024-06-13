@@ -19,7 +19,9 @@ import { INotification } from '../../interfaces/notification.interface';
   styleUrl: './notification.component.scss',
 })
 export class NotificationComponent implements OnInit, OnDestroy {
-  @ViewChild('notificationContainer') container: ElementRef<HTMLDivElement> | undefined;
+  @ViewChild('notificationContainer') container:
+    | ElementRef<HTMLDivElement>
+    | undefined;
   constructor(
     private service: NotificationService,
     private renderer: Renderer2
@@ -38,14 +40,14 @@ export class NotificationComponent implements OnInit, OnDestroy {
       .pipe(takeWhile(() => this._subscribed))
       .subscribe({
         next: this.render.bind(this),
-      })
+      });
   }
 
   ngOnDestroy() {
     this._subscribed = false;
   }
   private render(notification: INotification) {
-    if(notification.message === '') {
+    if (notification.message === '') {
       return;
     }
     const notificationBox = this.renderer.createElement('div');
@@ -53,7 +55,9 @@ export class NotificationComponent implements OnInit, OnDestroy {
     const content = this.renderer.createElement('div');
     const boxColorClass = this.classMap?.get(notification.type);
     const classesToAdd = ['message-box', boxColorClass];
-    classesToAdd.forEach((x) => this.renderer.addClass(notificationBox, x as string));
+    classesToAdd.forEach((x) =>
+      this.renderer.addClass(notificationBox, x as string)
+    );
     this.renderer.setStyle(
       notificationBox,
       'transition',

@@ -11,7 +11,6 @@ import { AbstractControl } from '@angular/forms';
 export class FormErrorComponent {
   @Input() formInput: AbstractControl | undefined | null;
   @Input() name: string = '';
-  constructor() {}
 
   get errorMessages(): string[] {
     if (!this.formInput || !this.formInput.touched) {

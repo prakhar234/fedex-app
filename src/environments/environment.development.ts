@@ -1,4 +1,4 @@
 export const environment = {
-    production: false,
-    authUrl: 'https://jsonplaceholder.typicode.com'
+  production: false,
+  authUrl: 'https://jsonplaceholder.typicode.com',
 };

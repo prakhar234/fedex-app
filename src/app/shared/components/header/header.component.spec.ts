@@ -1,23 +1,16 @@
-import {
-  ComponentFixture,
-  TestBed,
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
-import {
-  provideRouter,
-  withViewTransitions,
-} from '@angular/router';
+import { provideRouter, withViewTransitions } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { routes } from '../../../app.routes';
 
-
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
-  let el: DebugElement
+  let el: DebugElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -53,16 +46,16 @@ describe('HeaderComponent', () => {
     expect(component.toggleMenuVisible).toBeFalse();
     component.toggleMenu();
     expect(component.toggleMenuVisible).toBeTrue();
-  })
+  });
 
   it('should call onResize when window is resized', () => {
     spyOn(component, 'onResize').and.callThrough();
     const resizeEvent = new Event('resize');
     Object.defineProperty(resizeEvent, 'target', {
       value: {
-        innerWidth: 1024
+        innerWidth: 1024,
       },
-      writable: false
+      writable: false,
     });
 
     // Dispatch the resize event
@@ -76,9 +69,9 @@ describe('HeaderComponent', () => {
     const resizeEvent = new Event('resize');
     Object.defineProperty(resizeEvent, 'target', {
       value: {
-        innerWidth: 1024
+        innerWidth: 1024,
       },
-      writable: false
+      writable: false,
     });
 
     // Dispatch the resize event

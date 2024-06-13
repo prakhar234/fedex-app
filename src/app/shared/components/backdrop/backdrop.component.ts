@@ -5,7 +5,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './backdrop.component.html',
-  styleUrl: './backdrop.component.scss'
+  styleUrl: './backdrop.component.scss',
 })
 export class BackdropComponent {
   @Output() backdropClick = new EventEmitter<void>();
@@ -13,5 +13,4 @@ export class BackdropComponent {
   handleClick() {
     this.backdropClick.emit();
   }
-
 }

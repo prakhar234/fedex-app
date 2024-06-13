@@ -23,7 +23,7 @@ describe('NotificationServiceService', () => {
     let testNotification: INotification = {
       message: 'ABC',
       type: NotificationType.Error,
-      duration: 3000
+      duration: 3000,
     };
     service.success('hello', 1000);
     flushMicrotasks();
@@ -39,7 +39,7 @@ describe('NotificationServiceService', () => {
     let testNotification: INotification = {
       message: 'ABC',
       type: NotificationType.Success,
-      duration: 3000
+      duration: 3000,
     };
     service.error('hello', 1000);
     flushMicrotasks();
@@ -55,7 +55,7 @@ describe('NotificationServiceService', () => {
     let testNotification: INotification = {
       message: 'ABC',
       type: NotificationType.Success,
-      duration: 3000
+      duration: 3000,
     };
     service.info('hello', 1000);
     flushMicrotasks();
@@ -71,7 +71,7 @@ describe('NotificationServiceService', () => {
     let testNotification: INotification = {
       message: 'ABC',
       type: NotificationType.Success,
-      duration: 3000
+      duration: 3000,
     };
     service.warning('hello', 1000);
     flushMicrotasks();

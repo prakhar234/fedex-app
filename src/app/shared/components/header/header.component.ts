@@ -7,14 +7,13 @@ import { BackdropComponent } from '../backdrop/backdrop.component';
   standalone: true,
   imports: [NavigationComponent, BackdropComponent],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-
-  @HostListener("window:resize", ['$event'])
+  @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     const width = event.target.innerWidth;
-    if(width > 767) {
+    if (width > 767) {
       this.toggleMenuVisible = false;
     }
   }
@@ -24,5 +23,4 @@ export class HeaderComponent {
   toggleMenu() {
     this.toggleMenuVisible = !this.toggleMenuVisible;
   }
-
 }

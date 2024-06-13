@@ -3,7 +3,7 @@ import { IUser } from '../../shared/interfaces/user.interface';
 import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   user$ = new Subject<IUser | null>();
@@ -11,10 +11,12 @@ export class AuthService {
   constructor() {
     this.isAuthenticated = !!localStorage.getItem('user');
   }
-  // this service is just faking the sign in of user. 
-  // If the user is not signed in, user will be null other while registering 
+  // this service is just faking the sign in of user.
+  // If the user is not signed in, user will be null other while registering
   // User will be added when registration api return successful response
-  private user: IUser | null = JSON.parse(localStorage.getItem('user') || 'null');
+  private user: IUser | null = JSON.parse(
+    localStorage.getItem('user') || 'null'
+  );
   private isAuthenticated = false;
 
   signInUser(user: IUser): void {
@@ -25,11 +27,10 @@ export class AuthService {
   }
 
   getUser(): IUser | null {
-
-    if(this.user) {
+    if (this.user) {
       return {
-        ...this.user
-      }
+        ...this.user,
+      };
     }
 
     return null;

@@ -42,10 +42,22 @@ describe('FormErrorComponent', () => {
     component.formInput = new FormControl('', [
       Validators.required,
       Validators.minLength(3),
-      control => control.value && !/\S+@\S+\.\S+/.test(control.value) ? { invalidEmail: true } : null,
-      control => control.value && !/[A-Z]/.test(control.value) ? { noUpperCase: true } : null,
-      control => control.value && !/[a-z]/.test(control.value) ? { noLower: true } : null,
-      control => control.value && /Prakhar/i.test(control.value) ? { containsName: true } : null,
+      (control) =>
+        control.value && !/\S+@\S+\.\S+/.test(control.value)
+          ? { invalidEmail: true }
+          : null,
+      (control) =>
+        control.value && !/[A-Z]/.test(control.value)
+          ? { noUpperCase: true }
+          : null,
+      (control) =>
+        control.value && !/[a-z]/.test(control.value)
+          ? { noLower: true }
+          : null,
+      (control) =>
+        control.value && /Prakhar/i.test(control.value)
+          ? { containsName: true }
+          : null,
     ]);
     component.formInput.markAsTouched();
 
@@ -90,7 +102,10 @@ describe('FormErrorComponent', () => {
     component.formInput.markAsTouched();
     component.formInput.setErrors({ required: true, minlength: true });
 
-    const expectedMessages = ['Password is a required field!', 'Password is too short!'];
+    const expectedMessages = [
+      'Password is a required field!',
+      'Password is too short!',
+    ];
     expect(component.errorMessages).toEqual(expectedMessages);
   });
 });

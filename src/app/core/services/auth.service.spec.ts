@@ -10,12 +10,12 @@ describe('AuthService', () => {
     firstName: 'firstName',
     lastName: 'lastName',
     email: 'email',
-    password: 'password'
-  }
+    password: 'password',
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthService]
+      providers: [AuthService],
     });
     service = TestBed.inject(AuthService);
   });
@@ -48,21 +48,20 @@ describe('AuthService', () => {
       next: (user) => {
         expect(user?.id).toBe(fakeUser.id);
         done();
-      }
+      },
     });
     service.signInUser(fakeUser);
-
   });
 
   it('should return null if user is not signed in', () => {
     service.logout();
     const user = service.getUser();
     expect(user).toBe(null);
-  })
+  });
 
   it('should set the user to passed user', () => {
     service.setUser(fakeUser);
     const user = service.getUser();
     expect(user?.id).toBe(fakeUser.id);
-  })
+  });
 });

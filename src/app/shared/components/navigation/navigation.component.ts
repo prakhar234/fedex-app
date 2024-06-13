@@ -9,20 +9,19 @@ import { IUser } from '../../interfaces/user.interface';
   standalone: true,
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.scss'
+  styleUrl: './navigation.component.scss',
 })
 export class NavigationComponent implements OnInit, OnDestroy {
-
-  constructor(private authService: AuthService, private router: Router){}
+  constructor(private authService: AuthService, private router: Router) {}
   isAuthenticated = false;
   userSubscription: Subscription | undefined;
 
   ngOnInit(): void {
-    this.userSubscription = this.authService.user$.subscribe(({
+    this.userSubscription = this.authService.user$.subscribe({
       next: (user: IUser | null) => {
         this.isAuthenticated = !!user;
-      }
-    }));
+      },
+    });
   }
 
   logout(): void {
@@ -31,9 +30,8 @@ export class NavigationComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if(this.userSubscription) {
+    if (this.userSubscription) {
       this.userSubscription.unsubscribe();
     }
   }
-
 }

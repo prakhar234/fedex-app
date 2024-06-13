@@ -10,16 +10,22 @@ export const routes: Routes = [
   },
   {
     path: 'signup',
-    loadComponent: () => import('./features/signup/components/signup/signup.component').then((m) => m.SignupComponent),
-    canActivate: [signupAuthGuard]
+    loadComponent: () =>
+      import('./features/signup/components/signup/signup.component').then(
+        (m) => m.SignupComponent
+      ),
+    canActivate: [signupAuthGuard],
   },
   {
     path: 'home',
-    loadComponent: () => import('./features/home/components/home/home.component').then((m) => m.HomeComponent),
+    loadComponent: () =>
+      import('./features/home/components/home/home.component').then(
+        (m) => m.HomeComponent
+      ),
     canActivate: [authGuard],
   },
   {
     path: '**',
-    redirectTo: 'signup'
+    redirectTo: 'signup',
   },
 ];

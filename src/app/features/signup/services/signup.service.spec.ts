@@ -5,7 +5,11 @@ import {
 } from '@angular/common/http/testing';
 
 import { SignupService } from './signup.service';
-import { IUser, User, UserAlbum } from '../../../shared/interfaces/user.interface';
+import {
+  IUser,
+  User,
+  UserAlbum,
+} from '../../../shared/interfaces/user.interface';
 
 describe('SignupService', () => {
   let service: SignupService;
@@ -14,11 +18,10 @@ describe('SignupService', () => {
   const fakeThumbnailResponse: UserAlbum = {
     albumId: '1',
     id: '6',
-    title: "accusamus ea aliquid et amet sequi nemo",
-    "url": "https://via.placeholder.com/600/56a8c2",
-    "thumbnailUrl": "https://via.placeholder.com/150/56a8c2"
-  }
-   
+    title: 'accusamus ea aliquid et amet sequi nemo',
+    url: 'https://via.placeholder.com/600/56a8c2',
+    thumbnailUrl: 'https://via.placeholder.com/150/56a8c2',
+  };
 
   const fakeUserResponse: IUser = {
     id: '1',
@@ -35,7 +38,7 @@ describe('SignupService', () => {
     email: 'email',
     password: 'password',
     thumbnailUrl: 'abcd',
-  }
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -54,9 +57,11 @@ describe('SignupService', () => {
     service.getThumbnailUrl(6).subscribe((thumbnailUrl) => {
       expect(thumbnailUrl).toBeTruthy();
     });
-    const req = httpTestingController.expectOne('https://jsonplaceholder.typicode.com/photos/6');
+    const req = httpTestingController.expectOne(
+      'https://jsonplaceholder.typicode.com/photos/6'
+    );
     expect(req.request.method).toEqual('GET');
-    req.flush( fakeThumbnailResponse );
+    req.flush(fakeThumbnailResponse);
   });
 
   it('should post user', () => {
@@ -66,9 +71,11 @@ describe('SignupService', () => {
       expect(user.lastName).toBe(fakeUserResponse.lastName);
       expect(user.thumbnailUrl).toBe(fakeUserResponse.thumbnailUrl);
       expect(user.email).toBe(fakeUserResponse.email);
-    })
-    const req = httpTestingController.expectOne('https://jsonplaceholder.typicode.com/users');
+    });
+    const req = httpTestingController.expectOne(
+      'https://jsonplaceholder.typicode.com/users'
+    );
     expect(req.request.method).toEqual('POST');
-    req.flush( fakeUserResponse );
-  })
+    req.flush(fakeUserResponse);
+  });
 });
