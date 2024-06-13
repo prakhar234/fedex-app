@@ -36,7 +36,9 @@ This application is using standalone components instead of the modular approach.
 This application is using an architecture which can be scaled up very easily in the future. It is production ready as well and we can manage any feature management or API related urls in environment files.
 Here is the architecture -
 `core` - core contains all auth related services, guards and interceptors. Since this is the core module(in old terms), it manages the authentication of a SPA, manages all the guards available for a particular route and can also add app level interceptors which can be used to intercept any request and append any header or token required based on the application.
+
 `features` - features contains all the features available with in an application e.g - Login, Dashboard, Products (may further contain product list, detail and add products), Profile and many more. Before standalone, we used to create individual modules for each page for feature present in an application. It is similar to that to provide easy scalability of the application.
+
 `shared` - shared folder contains all the common components which can be utilized through out the application like Header, footer, notification, modal, backdrop, form-error, spinner and many more. These are standalone components but can be utlized in any part of the application. This folder also contains interfaces, enums, services and styles which can be reused throught the application.
 
 Since this architecture looks robust, scalable and easily maintanable to me, I have used it for this application.
