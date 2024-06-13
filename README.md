@@ -24,7 +24,7 @@ Run `npm run coverage` to check code coverage.
 
 ## Running end-to-end tests
 
-Run `npm run cypress:open` to execute the end-to-end tests via cypress.
+Run `npm run cypress:open` or `npm run cypress:run` to execute the end-to-end tests via cypress.
 
 ## Further help
 
@@ -49,3 +49,5 @@ If the request is successful, a notification is added on the page that notifes t
 If the request fails because of any network error or server error, then a error notification is shown on the page stating that the sign up is not successful, please try again later!
 
 I have added AuthService to simply show a behaviour and assuming that the user also gets signed in after signup. Actual behaviour of a signup functionality will be different. It might be to show a successful page stating to verify yourself using the email sent which will redirect the user to login page.
+
+Steps to run unit tests and end to end tests are provided above.
