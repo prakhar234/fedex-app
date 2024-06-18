@@ -18,7 +18,8 @@ export class CustomValidator {
     const hasUpperCase = /[A-Z]/.test(password);
     const hasLowerCase = /[a-z]/.test(password);
     const doesNotContainName =
-      !password.toLowerCase().includes(firstName.toLowerCase()) && !password.toLowerCase().includes(lastName.toLowerCase());
+      !password.toLowerCase().includes(firstName.toLowerCase()) &&
+      !password.toLowerCase().includes(lastName.toLowerCase());
 
     if (!hasUpperCase) {
       return {
